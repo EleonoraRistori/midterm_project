@@ -8,7 +8,7 @@ class NGramsCounter{
 public:
     void countNGrams(const std::vector<std::string>& words);
 
-    void parallelCountNGrams(const std::vector<std::string>& words);
+    void parallelCountNGrams(const std::vector<std::string>& words, int num_threads);
 
     explicit NGramsCounter(int nGramLength);
 

@@ -1,17 +1,1 @@
-Wikipedia è diventata ormai un punto di riferimento per le informazioni sul web. Se avete un dubbio e cercate in rete, quasi certamente vi apparirà tra la lista possibile una pagina di Wikipedia.
-Soltanto la versione italiana, nel momento in cui sto scrivendo, ha superato le 930 mila pagine. Teniamo poi conto che esistono versioni nelle più disparate lingue (l’inglese per eccellenza, naturalmente) e che, nonostante qualche momento di crisi e leggi contro il web che la mettono a rischio, gli utenti continuano a popolare le pagine.
-
-Come salvare sul proprio pc una pagina che si trova interessante e utile da rileggere in futuro? Wikipedia non ha copyright: questo significa che potete scaricare senza problemi il suo contenuto.
-Nel caso di una pagina singola, potete semplicemente scegliere il menu “Stampa/esporta” sulla barra laterale sinistra e quindi cliccare su “Scarica come PDF”. La vostra pagina sarà salvata come un normale file pdf, comprensiva di immagini e di link.
-Nello stesso menu avete a disposizione la versione stampabile e la possibilità di “creare un libro”, ovvero di selezionare più pagine prima di creare il vostro pdf.
-
-Una domanda sorge spontanea: c’è un sistema per salvare tutte, ma proprio tutte, le pagine di Wikipedia?
-La risposta ce la dà Wikipedia stessa a questa pagina. Wikipedia crea dei backup periodici, sia del database che delle pagine fisiche, in modo da permettere agli utenti di scaricarle. Il motivo? Se Wikipedia dovesse per caso “cadere in disgrazia”, qualcuno potrebbe prenderle le redini – se possiede, naturalmente, un server capace di tenere un carico simile. Ma anche un utente comune può scaricarle soltanto per il piacere di leggerle offline.
-
-Come potete vedere al link proposto, abbiamo la possibilità di esportare tutte le pagine in formato HTML (ma in questo caso non saranno aggiornate, visto che si tratta di un’operazione difficile e che richiede tempo) oppure di scaricare l’intero database. In quest’ultimo caso, ci basterà poi installare MediaWiki (che, per intenderci, è il software su cui è stata costruita Wikipedia) e travasare lì dentro il database.
-
-Nello specifico, a questo indirizzo troverete la lista cronologica di quando sono stati fatti i backup. Se cliccate su uno di questi, vi appare una lista che sembra infinita: in realtà si tratta di diversi tipi di backup.
-Se siete un utente comune e volete soltanto fare il download in locale, la voce “All pages, current versions only” è più che sufficiente: contiene infatti tutte le pagine, senza revisioni o quant’altro.
-Altre voci più complete mettono a disposizione anche le revisioni, i redirect, i log di evento, ecc.
-
-Insomma, Wikipedia è davvero libera. Tanto da poterla replicare su un proprio portale online.
+Wikipedia è diventata ormai
