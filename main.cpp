@@ -81,46 +81,54 @@ void printOccurences(const std::unordered_map<std::string, int>& map, int n){
 }
 
 
-int main() {
-//    auto books = read_book_n_times("../Text/prova.txt",100);
-    NGramsCounter nGramsCounter(3);
-//    auto begin = chrono::high_resolution_clock::now();
-//    nGramsCounter.countNGrams(books);
-//    auto end = chrono::high_resolution_clock::now();
-//    auto duration = chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
-//    printf("Time for sequential algorithm   %.3f s |\n", (duration.count() * 1e-9));
-//    printOccurences(nGramsCounter.getMap(), 5);
-//    begin = chrono::high_resolution_clock::now();
-//    nGramsCounter.parallelCountNGrams(books, 12);
-//    end = chrono::high_resolution_clock::now();
-//    duration = chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
-//    printf("Time for parallel algorithm   %.3f s |\n", (duration.count() * 1e-9));
-//    printOccurences(nGramsCounter.getMap(), 5);
-    vector<string> words;
-    vector<std::chrono::nanoseconds> sequentialDuration;
-    vector<std::chrono::nanoseconds> parallelDuration;
-//    for(int i=1; i<50; i++){
-//        words =  read_book_n_times("../Text/Text.txt",i);
-//        cout << i;
-//        auto begin = chrono::high_resolution_clock::now();
-//        nGramsCounter.countNGrams(words);
-//        auto end = chrono::high_resolution_clock::now();
-//        sequentialDuration.push_back(chrono::duration_cast<std::chrono::nanoseconds>(end - begin));
-//        cout << i;
-//    }
+void saveArray (int num_points, vector<chrono::milliseconds> array, string filename){
+    std::ofstream performance;
+    performance.open (filename);
+    for(int point_id=0; point_id<num_points; point_id++){
+        performance << array[point_id].count() ;
+        performance << "\n";
+    }
+}
 
-    for(int i=1; i<50; i++){
-        cout << i;
-        words =  read_book_n_times("../Text/Text.txt",i);
-        cout << i;
+
+
+int main() {
+
+    NGramsCounter nGramsCounter(3);
+    vector<string> words;
+    vector<std::chrono::milliseconds> sequentialDuration;
+    vector<std::chrono::milliseconds> parallelDuration;
+    int num_iteration = 25;
+
+
+    for(int i=1; i<num_iteration; i++){
+        words =  read_book_n_times("../Text/Text.txt", 50);
+        std::cout << i;
         auto beginP = chrono::high_resolution_clock::now();
-        cout << i;
-        nGramsCounter.parallelCountNGrams(words, 12);
-        cout << i;
+        nGramsCounter.parallelCountNGrams(words, i);
         auto endP = chrono::high_resolution_clock::now();
-        cout << i;
-        parallelDuration.push_back(chrono::duration_cast<std::chrono::nanoseconds>(endP - beginP));
+        parallelDuration.push_back(chrono::duration_cast<std::chrono::milliseconds>(endP - beginP));
+    }
+    saveArray(num_iteration, parallelDuration, "threads_time.csv");
+
+    for(int i=1; i<num_iteration; i++){
+        words =  read_book_n_times("../Text/Text.txt",i*5);
+        std::cout << i;
+        auto begin = chrono::high_resolution_clock::now();
+        nGramsCounter.countNGrams(words);
+        auto end = chrono::high_resolution_clock::now();
+        sequentialDuration.push_back(chrono::duration_cast<std::chrono::milliseconds>(end - begin));
     }
 
+    for(int i=1; i<num_iteration; i++){
+        words =  read_book_n_times("../Text/Text.txt",i*5);
+        std::cout << i;
+        auto beginP = chrono::high_resolution_clock::now();
+        nGramsCounter.parallelCountNGrams(words, 12);
+        auto endP = chrono::high_resolution_clock::now();
+        parallelDuration.push_back(chrono::duration_cast<std::chrono::milliseconds>(endP - beginP));
+    }
+    saveArray(num_iteration, sequentialDuration, "time.csv");
+    saveArray(num_iteration, parallelDuration, "p_time.csv");
     return 0;
 }
