@@ -67,20 +67,10 @@ void NGramsCounter::parallelCountNGrams(const vector<std::string> &words, int nu
                 }
             }
         }
-//atomic oppure sequenzializzazione DONE
-// separare i tempi
-//#pragma omp critical
-//        for (auto [ngram, count]: threadMap) {
-//            if (!map[ngram]) {
-//                map[ngram] = count;
-//            } else {
-//                map[ngram] += count;
-//            }
-//            map[ngram] += count;
-//
-//        }
-        for (auto [ngram, count]: threadMap) {
+//atomic oppure sequenzializzazione
+
 #pragma omp critical
+        for (auto [ngram, count]: threadMap) {
             map[ngram] += count;
 
         }
