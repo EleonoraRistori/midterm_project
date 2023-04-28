@@ -111,24 +111,24 @@ int main() {
     }
     saveArray(num_iteration, parallelDuration, "threads_time.csv");
 
-    for(int i=1; i<num_iteration; i++){
-        words =  read_book_n_times("../Text/Text.txt",i*5);
-        std::cout << i;
-        auto begin = chrono::high_resolution_clock::now();
-        nGramsCounter.countNGrams(words);
-        auto end = chrono::high_resolution_clock::now();
-        sequentialDuration.push_back(chrono::duration_cast<std::chrono::milliseconds>(end - begin));
-    }
-
-    for(int i=1; i<num_iteration; i++){
-        words =  read_book_n_times("../Text/Text.txt",i*5);
-        std::cout << i;
-        auto beginP = chrono::high_resolution_clock::now();
-        nGramsCounter.parallelCountNGrams(words, 12);
-        auto endP = chrono::high_resolution_clock::now();
-        parallelDuration.push_back(chrono::duration_cast<std::chrono::milliseconds>(endP - beginP));
-    }
-    saveArray(num_iteration, sequentialDuration, "time.csv");
-    saveArray(num_iteration, parallelDuration, "p_time.csv");
+//    for(int i=1; i<num_iteration; i++){
+//        words =  read_book_n_times("../Text/Text.txt",i*5);
+//        std::cout << i;
+//        auto begin = chrono::high_resolution_clock::now();
+//        nGramsCounter.countNGrams(words);
+//        auto end = chrono::high_resolution_clock::now();
+//        sequentialDuration.push_back(chrono::duration_cast<std::chrono::milliseconds>(end - begin));
+//    }
+//
+//    for(int i=1; i<num_iteration; i++){
+//        words =  read_book_n_times("../Text/Text.txt",i*5);
+//        std::cout << i;
+//        auto beginP = chrono::high_resolution_clock::now();
+//        nGramsCounter.parallelCountNGrams(words, 12);
+//        auto endP = chrono::high_resolution_clock::now();
+//        parallelDuration.push_back(chrono::duration_cast<std::chrono::milliseconds>(endP - beginP));
+//    }
+//    saveArray(num_iteration, sequentialDuration, "time.csv");
+//    saveArray(num_iteration, parallelDuration, "p_time.csv");
     return 0;
 }

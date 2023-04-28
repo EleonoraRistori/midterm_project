@@ -51,7 +51,6 @@ void NGramsCounter::parallelCountNGrams(const vector<std::string> &words, int nu
 
 #pragma omp parallel num_threads(num_threads)  default(none) shared(size, words)
     {
-
         unordered_map<string, int> threadMap;
 
 #pragma omp for nowait
@@ -67,7 +66,6 @@ void NGramsCounter::parallelCountNGrams(const vector<std::string> &words, int nu
                 }
             }
         }
-//atomic oppure sequenzializzazione
 
 #pragma omp critical
         for (auto [ngram, count]: threadMap) {
@@ -78,5 +76,12 @@ void NGramsCounter::parallelCountNGrams(const vector<std::string> &words, int nu
     }
 
 }
+
+NGramsCounter::~NGramsCounter() {
+    map.clear();
+}
+
+
+
 
 
